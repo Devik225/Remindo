@@ -74,10 +74,17 @@ body {
 }
 
 .list_name {
+  display: flex;
   color: white;
   margin-bottom: 3.5vw;
   font-size: 2.1vw;
   font-weight: 500;
+}
+
+.list_edit {
+  width: 1.6vw;
+  margin-left: 0.6vw;
+  cursor: pointer;
 }
 
 .cards {
@@ -87,10 +94,41 @@ body {
 }
 
 .todo {
-  width: 30%;
+  width: 24%;
+  margin-right: 5vw;
 }
 
-.todo::-webkit-scrollbar {
+.todo_cnt {
+  margin-top: 1vw;
+  overflow-y: scroll;
+  height: 30vw;
+}
+
+.todo_card {
+  background-color: white;
+  display: flex;
+  color: #0c1821;
+  align-items: center;
+  height: 3.5vw;
+  border-radius: 3px;
+  padding-left: 1vw;
+  padding-right: 1vw;
+  margin-bottom: 0.5vw;
+  font-size: 1vw;
+  font-weight: 600;
+}
+
+.todo_card_title {
+  margin-left: 0.6vw;
+}
+
+.img_expand {
+  cursor: pointer;
+  width: 1.4vw;
+  margin-left: 70%;
+}
+
+.todo_cnt::-webkit-scrollbar {
   display: none;
 }
 
@@ -152,5 +190,19 @@ select:focus {
 }
 
 .progress {
-  width: 30%;
+  width: 22%;
+}
+
+.progress_data {
+  background-color: #242f37;
+  margin-top: 1vw;
+  font-size: 1vw;
+  padding: 0.8vw;
+  padding-top: 1vw;
+  border-radius: 3px;
+  border: 1px solid #86898c;
+}
+
+.progress_cnt {
+  margin-bottom: 0.5vw;
 }
