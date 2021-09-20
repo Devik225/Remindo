@@ -1,0 +1,156 @@
+body {
+  background-color: #0c1821;
+  font-family: "Mukta", sans-serif;
+  overflow: hidden;
+}
+
+.wrapper {
+  display: block;
+}
+
+/* header */
+
+.nav {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5vw;
+  z-index: 10;
+}
+
+.nav_content {
+  width: 85%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  width: 5vw;
+  height: 5vw;
+  background-color: #b41717;
+  background-image: url("img/logo.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 1.8vw;
+}
+
+.logo_name {
+  color: #0c1821;
+  font-size: 1.55vw;
+  font-weight: 500;
+  margin-left: 2vw;
+}
+
+.day_time {
+  display: flex;
+  font-size: 1.2vw;
+  font-weight: 600;
+}
+.time {
+  color: white;
+  padding-left: 1vw;
+  padding-right: 1vw;
+  border-radius: 3px;
+  background-color: #0c1821;
+  margin-left: 1.5vw;
+  font-weight: 400;
+  font-size: 1.1vw;
+}
+
+/* main body */
+
+.body_wrap {
+  position: absolute;
+  top: 8vw;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding-left: 7vw;
+}
+
+.list_name {
+  color: white;
+  margin-bottom: 3.5vw;
+  font-size: 2.1vw;
+  font-weight: 500;
+}
+
+.cards {
+  display: flex;
+  color: white;
+  font-size: 1.2vw;
+}
+
+.todo {
+  width: 30%;
+}
+
+.todo::-webkit-scrollbar {
+  display: none;
+}
+
+.compose {
+  width: 32%;
+  margin-right: 5%;
+}
+
+.compose_title {
+  padding: 0.6vw;
+  padding-right: 1vw;
+  margin-top: 1vw;
+  color: #242424;
+  font-weight: 600;
+  background-color: #bababa;
+  font-size: 0.95vw;
+  border-radius: 3px;
+}
+
+.compose_desc {
+  padding: 0.6vw;
+  padding-right: 1vw;
+  margin-top: 0.6vw;
+  color: #242424;
+  font-weight: 600;
+  background-color: #bababa;
+  font-size: 0.95vw;
+  border-radius: 3px;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+}
+
+.inp_box {
+  width: 100%;
+  border: none;
+  background: none;
+}
+
+.btn_submit {
+  position: relative;
+  left: 92%;
+  width: 2.5vw;
+  height: 2.5vw;
+  text-align: center;
+  font-size: 2vw;
+  font-weight: 100 !important;
+  border: none;
+  border-radius: 25px;
+  box-shadow: 0px 4px 6px rgb(131, 131, 131);
+  cursor: pointer;
+}
+
+.btn_submit:hover {
+  box-shadow: none;
+}
+
+.progress {
+  width: 30%;
+}
