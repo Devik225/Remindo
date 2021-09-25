@@ -10,7 +10,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&display=swap');
     </style>
 </head>
-<body>
+<body onload="timeinit()">
 
 
     
@@ -25,9 +25,11 @@
 
                 <div class="logo_name"> Remindo </div>  
 
-                <div class="day_time"> <%=ejs_date%> 
-                    <div class="time"> <%=ejs_time%> </div>
+                <div class="day_time"> <span id="r_date">22, sep, 2020</span>
+                    <div class="time"> <span id="r_time">20:20</span> </div>
                 </div>
+
+             
 
             </div>    
 
@@ -105,13 +107,19 @@
 
                 <!-- Progress -->
                 <div class="progress">
-                    Progress
+                    <div class="flexme">
+                        Progress
+                    <form action="/reset" method="POST">
+                        <button class="btn_reset" name="reset" value="clearall">reset</button>
+                    </form>  
+                    </div>
+                      
                     <div class="progress_data">
-                        <div class="progress_cnt">Total tasks decided - </div>
-                        <div class="progress_cnt">Tasks completed - </div>
-                        <div class="progress_cnt">Tasks pending - </div>
+                        <div class="progress_cnt">Total tasks decided - <%= ejs_total %> </div>
+                        <div class="progress_cnt">Tasks completed - <%= ejs_done %> </div>
+                        <div class="progress_cnt">Tasks pending - <%= ejs_pending %> </div>
                         <div class="progress_bar" style=" margin-top: 1vw; width: 100%; height: 0.5vw; background-color: white; border-radius: 25px;">
-                            <div class="progress_completed" style="width: 55%; height: 0.5vw; background-color: rgb(28, 143, 5); border-radius: 25px;"></div>
+                            <div class="progress_completed" style="width: <% ejs_done %>; height: 0.5vw; background-color: rgb(28, 143, 5); border-radius: 25px;"></div>
                         </div>
                     </div>
                 </div>
@@ -122,6 +130,30 @@
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script>
+
+        function updateClock(){
+            const month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            const d = new Date();
+
+            const nDate = new Date().toLocaleTimeString('en-US', {
+                timeZone: 'Asia/Calcutta', hours:'long'
+            });
+
+            var date = d.getDate()+ "th" + " " + month[d.getMonth()] + " " + d.getFullYear();
+            var time = nDate.slice(0, -6) +" " + nDate.slice(-2);
+            document.getElementById("r_date").textContent = date;
+            document.getElementById("r_time").textContent = time;
+
+        }
+
+        function timeinit(){
+            updateClock();
+            window.setInterval("updateClock()", 1);
+        }
+    
+    </script>
 
 </body>
 </html>
