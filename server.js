@@ -25,10 +25,23 @@ const cardSchema = new mongoose.Schema({
 const card = mongoose.model("card", cardSchema);
 
 
+
+const month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+const d = new Date();
+
+const nDate = new Date().toLocaleTimeString('en-US', {
+    timeZone: 'Asia/Calcutta', hours:'long'
+});
+
+
 app.get("/", (req, res)=>{
 
     card.find((err, temp)=>{
-        res.render("index", {ejs_data:temp});
+        res.render("index", {
+            ejs_data: temp, 
+            ejs_date: d.getDate()+ "th" + " " + month[d.getMonth()] + " " + d.getFullYear(),
+            ejs_time: nDate.slice(0, -6) +" " + nDate.slice(-2)
+        });
     });
     
 })

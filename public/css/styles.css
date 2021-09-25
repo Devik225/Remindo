@@ -120,6 +120,25 @@ body {
   align-items: center;
 }
 
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
 .todo_card {
   position: relative;
   background-color: white;
@@ -133,10 +152,22 @@ body {
   margin-bottom: 0.5vw;
   font-size: 1vw;
   font-weight: 600;
+  height: 2vw;
+  overflow-y: hidden;
+  transition: height 0.5s ease-in-out;
+  -webkit-transition: height 0.5s ease-in-out;
+  -moz-transition: height 0.5s ease-in-out;
+  -ms-transition: height 0.5s ease-in-out;
+  -o-transition: height 0.5s ease-in-out;
+}
+
+.todo_card:hover {
+  height: 5vw;
+  overflow-y: scroll;
 }
 
 .todo_card_desc {
-  display: none;
+  margin-top: 1vw;
 }
 
 .todo_card_title {
