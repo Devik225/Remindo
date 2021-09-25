@@ -39,12 +39,12 @@ app.get("/", (req, res)=>{
     
 })
 
-app.post("/reset",(req, res)=>{
-    total_tasks = 0;
-    tasks_done = 0;
-    res.redirect('/');
+// app.post("/reset",(req, res)=>{
+//     total_tasks = 0;
+//     tasks_done = 0;
+//     res.redirect('/');
 
-})
+// })
 
 app.post("/", (req, res)=>{
     let heading = req.body.title;
