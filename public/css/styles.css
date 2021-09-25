@@ -73,6 +73,8 @@ body {
   padding-left: 7vw;
 }
 
+/* List name */
+
 .list_name {
   display: flex;
   color: white;
@@ -87,13 +89,22 @@ body {
   cursor: pointer;
 }
 
+/* To do cards */
+
 .cards {
   display: flex;
   color: white;
   font-size: 1.2vw;
 }
 
+.cards_toggle {
+  display: flex;
+  color: rgb(117, 117, 117);
+  font-size: 1.2vw;
+}
+
 .todo {
+  position: relative;
   width: 24%;
   margin-right: 5vw;
 }
@@ -104,12 +115,18 @@ body {
   height: 30vw;
 }
 
-.todo_card {
-  background-color: white;
+.flexme {
   display: flex;
+  align-items: center;
+}
+
+.todo_card {
+  position: relative;
+  background-color: white;
   color: #0c1821;
   align-items: center;
-  height: 3.5vw;
+  padding-top: 1vw;
+  padding-bottom: 1vw;
   border-radius: 3px;
   padding-left: 1vw;
   padding-right: 1vw;
@@ -118,20 +135,48 @@ body {
   font-weight: 600;
 }
 
+.todo_card_desc {
+  display: none;
+}
+
 .todo_card_title {
   margin-left: 0.6vw;
+  font-size: 1.2vw;
+}
+
+.btn_clear {
+  font-weight: 500;
+  position: absolute;
+  top: 0.2vw;
+  right: 0;
+  cursor: pointer;
+}
+
+.check_btn {
+  height: 1.1vw;
+  font-size: 0.6vw;
+  border: 3px solid #0c1821;
+  background-color: none;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.check_btn:focus {
+  background-color: #23188850;
 }
 
 .img_expand {
+  position: absolute;
+  right: 1vw;
   cursor: pointer;
   width: 1.4vw;
-  margin-left: 70%;
 }
 
 .todo_cnt::-webkit-scrollbar {
   display: none;
 }
 
+/* Compose */
 .compose {
   width: 32%;
   margin-right: 5%;
@@ -189,6 +234,7 @@ select:focus {
   box-shadow: none;
 }
 
+/* Progress */
 .progress {
   width: 22%;
 }

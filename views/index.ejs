@@ -11,75 +11,96 @@
     </style>
 </head>
 <body>
+
+
+    
     <div class="wrapper">
+
         <!-- header -->
         <div class="nav">
-            <div class="logo">
 
-            </div>
+            <div class="logo"></div>
 
             <div class="nav_content">
-                <div class="logo_name">
-                    Remindo
+
+                <div class="logo_name"> Remindo </div>  
+
+                <div class="day_time"> 9th September, 2021 
+                    <div class="time"> 12:12 </div> 
                 </div>
-    
-                <div class="day_time">
-                    9th September, 2021
-                    <div class="time">
-                        12:12
-                    </div>
-                </div>
-            </div>           
-            
+
+            </div>    
+
         </div>
 
 
         <!-- main body -->
         <div class="body_wrap">
+
+            <!-- list name -->
             <div class="list_name">
-                <div>Devik's List</div> 
+                <div class="author">Devik's List</div> 
                 <img src="img/edit.svg" class="list_edit">
             </div>
 
+            <!-- To do card -->
             <div class="cards">
 
-                <div class="todo">
-                    To DO
+                <!-- To Do -->
+                <div class="todo"> To Do
 
-                    <form action="">
+                    <form action="/" method="POST">
+                        <button class="btn_clear" name="clear" value="clearall">clear</button>
+                    </form>                   
 
-                        <div class="todo_cnt">
-                            <div class="todo_card">
-                                <input type="checkbox" class="check">
-                                <div class="todo_card_title">Study</div> 
-                                <img src="img/expand.svg" alt="" class="img_expand"> 
+                    <div class="todo_cnt">
+
+                        <% for(var i = 0; i<ejs_title.length; i++){ %>
+                            <div class="todo_card" id="tog_crd">
+
+                                <div class="flexme">
+
+                                    <form action="/"  method="POST" class="form_check" >
+                                        <button id="btn" class="check_btn" type="submit" name="check" value="tick"></button>
+                                    </form>  
+            
+                                    <div class="todo_card_title"> <%= ejs_title [i]%></div>                                     
+                                    <img src="img/expand.svg" alt="" class="img_expand" id= "num">
+
+                                </div>   
+
+                                <div class="todo_card_desc"> 
+                                    <div style="margin-top: 0.6vw;"> Description: </div> <%= ejs_desc [i]%>
+                                </div> 
+
                             </div> 
-                        </div>
-                        
-                    </form>                                  
+                        <% } %>
+                                
+                    </div>       
+                                                    
                 </div>
 
+                <!-- Compose -->
                 <div class="compose">
                     Compose
-                    <form action="/">
+                    <form action="/" method="POST" class="form_compose">
 
-                        <div class="compose_title">
-                        
+                        <div class="compose_title">                        
                             <div>Title:</div>
-                            <input type="text" name="title" class="inp_box">
+                            <input type="text" name="title" class="inp_box" autocomplete="off">
                         </div>
-                        <div class="compose_desc">
-    
+
+                        <div class="compose_desc">    
                             <div>Description:</div>
-                            <textarea name="desc" id="desc" rows="6" class="inp_box" ></textarea>
+                            <textarea name="desc" id="desc" rows="6" class="inp_box" autocomplete="off"></textarea>
                             <button type="submit" class="btn_submit">+</button>
                         </div>
-                    
+
                     </form>
-                    
-                    
+
                 </div>
 
+                <!-- Progress -->
                 <div class="progress">
                     Progress
                     <div class="progress_data">
@@ -96,5 +117,8 @@
         </div>
 
     </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 </body>
 </html>
