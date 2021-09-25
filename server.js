@@ -7,6 +7,9 @@ var descs = [];
 
 const express = require("express");
 const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
+
+mongoose.connect("mongodb://localhost:27017/Remindo");
 
 const app = express();
 
@@ -14,9 +17,20 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static("public"));
 
+const cardSchema = new mongoose.Schema({
+    Title:String,
+    Description:String
+});
+
+const card = mongoose.model("card", cardSchema);
+
 
 app.get("/", (req, res)=>{
-    res.render("index", {ejs_title:titles, ejs_desc:descs});
+
+    card.find((err, temp)=>{
+        res.render("index", {ejs_data:temp});
+    });
+    
 })
 
 app.post("/", (req, res)=>{
@@ -25,21 +39,26 @@ app.post("/", (req, res)=>{
     let card_check = req.body.check;
     let remove = req.body.clear;
 
+    const cardtemp = new card(
+        {
+            Title:heading,
+            Description:description
+        }
+    );
+
     if(remove==="clearall"){
-        titles = [];
-        descs = [];
+        card.remove({}, ()=>{});
     }
 
     if(heading){
-        titles.push(heading.slice(0, 30));
-        descs.push(description.slice(0, 150));
+        cardtemp.save();
     }    
 
     if(card_check){
+        card.findByIdAndRemove({_id:card_check}, ()=>{});
         console.log("I am dead");
     }
-
-    console.log(card_check);  
+ 
     res.redirect("/");
 })
 

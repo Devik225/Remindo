@@ -55,26 +55,28 @@
 
                     <div class="todo_cnt">
 
-                        <% for(var i = 0; i<ejs_title.length; i++){ %>
+                        <%ejs_data.forEach((data)=>{%>
+
                             <div class="todo_card" id="tog_crd">
 
                                 <div class="flexme">
 
                                     <form action="/"  method="POST" class="form_check" >
-                                        <button id="btn" class="check_btn" type="submit" name="check" value="tick"></button>
+                                        <button id="btn" class="check_btn" type="submit" name="check" value= <%= data._id%> ></button>
                                     </form>  
             
-                                    <div class="todo_card_title"> <%= ejs_title [i]%></div>                                     
+                                    <div class="todo_card_title"> <%= data.Title%></div>                                     
                                     <img src="img/expand.svg" alt="" class="img_expand" id= "num">
 
                                 </div>   
 
                                 <div class="todo_card_desc"> 
-                                    <div style="margin-top: 0.6vw;"> Description: </div> <%= ejs_desc [i]%>
+                                    <div style="margin-top: 0.6vw;"> Description: </div> <%= data.Description%>
                                 </div> 
 
                             </div> 
-                        <% } %>
+
+                        <%})%>
                                 
                     </div>       
                                                     
