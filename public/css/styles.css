@@ -83,12 +83,6 @@ body {
   font-weight: 500;
 }
 
-.list_edit {
-  width: 1.6vw;
-  margin-left: 0.6vw;
-  cursor: pointer;
-}
-
 /* To do cards */
 
 .cards {
@@ -297,6 +291,29 @@ select:focus {
 
 .progress_cnt {
   margin-bottom: 0.5vw;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  margin-left: 1vw;
+}
+
+.userinput {
+  width: 8vw;
+  background: none;
+  font-size: 1vw;
+  border: none;
+  color: white;
+  font-weight: 400;
+}
+
+.input_edit {
+  width: 1vw;
+  position: relative;
+  top: 0.2vw;
+  margin-right: 0.2vw;
+  cursor: pointer;
 }
 
 @media (orientation: portrait) {

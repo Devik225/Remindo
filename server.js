@@ -1,14 +1,10 @@
-// Variables
-var total_tasks=0;
-var tasks_done=0;
-var tasks_pending=0;
-
 
 // Server
 
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const _ = require("lodash");
 
 mongoose.connect("mongodb://localhost:27017/Remindo");
 
@@ -18,6 +14,7 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static("public"));
 
+//cards
 const cardSchema = new mongoose.Schema({
     Title:String,
     Description:String
@@ -26,31 +23,80 @@ const cardSchema = new mongoose.Schema({
 const card = mongoose.model("card", cardSchema);
 
 
-app.get("/", (req, res)=>{
+//profiles
+const profileSchema = new mongoose.Schema({
+    Name: String,
+    total_tasks:Number,
+    tasks_done:Number,
+    profiles: [cardSchema]
+});
 
-    card.find((err, temp)=>{
-        res.render("index", {
-            ejs_data: temp, 
-            ejs_total: total_tasks,
-            ejs_done: tasks_done,
-            ejs_pending: total_tasks - tasks_done
-        });
+const profile = mongoose.model("profile", profileSchema);
+
+
+// app.get("/", (req, res)=>{
+
+//     card.find((err, temp)=>{
+//         res.render("index", {
+//             ejs_pageName:"Devil",
+//             ejs_data: temp, 
+//             ejs_total: total_tasks,
+//             ejs_done: tasks_done,
+//             ejs_pending: total_tasks - tasks_done
+//         });
+//     });
+    
+// })
+
+app.get("/:newurl", (req, res)=>{
+    const user = req.params.newurl;
+
+    profile.findOne({Name:user}, (err, found)=>{
+        if(!found){
+            const usertemp = new profile({
+                Name:user,
+                total_tasks:0,
+                tasks_done:0,
+                profiles: []
+            });
+        
+            usertemp.save();
+            res.redirect("/" + user);
+        }
+        else{
+            res.render("index", {
+                ejs_pageName:user,
+                ejs_data: found.profiles, 
+                ejs_total: found.total_tasks,
+                ejs_done: found.tasks_done,
+                ejs_pending: found.total_tasks - found.tasks_done
+            });
+        }
     });
+
     
 })
 
-// app.post("/reset",(req, res)=>{
-//     total_tasks = 0;
-//     tasks_done = 0;
-//     res.redirect('/');
+app.post("/delete",(req, res)=>{
+    let page_profile = _.capitalize(req.body.clear);
+    profile.findOne({Name:page_profile}, (err, found)=>{
 
-// })
+        found.profiles = [];
+        found.total_tasks=0;
+        found.tasks_done=0;
+        found.save();
+
+    });
+
+    res.redirect("/" + page_profile);
+})
+
+
 
 app.post("/", (req, res)=>{
     let heading = req.body.title;
     let description = req.body.desc;
-    let card_check = req.body.check;
-    let remove = req.body.clear;
+    let page_profile = _.capitalize(req.body._profile);
 
     const cardtemp = new card(
         {
@@ -59,28 +105,45 @@ app.post("/", (req, res)=>{
         }
     );
 
-    if(remove==="clearall"){
-        total_tasks = 0;
-        tasks_done = 0;
-        card.remove({}, ()=>{});        
-    }
-
     if(heading){
-        cardtemp.save();
-        total_tasks++;
-    }    
+        profile.findOne({Name:page_profile}, (err, found)=>{
 
-    if(card_check){
-        tasks_done++;
-        card.findByIdAndRemove({_id:card_check}, ()=>{});
-        console.log("I am dead");
-    }
- 
-    res.redirect("/");
+            console.log(found);
+            found.profiles.push(cardtemp);
+            found.total_tasks++;
+            found.save();
+
+        });
+    }     
+    res.redirect("/" + page_profile);
 })
 
 
 
-app.listen(process.env.PORT, ()=>{
+app.post("/removeCard",(req, res)=>{
+    let page_profile = _.capitalize(req.body.check);
+    let id_p = req.body.id;
+
+    profile.findOne({Name:page_profile}, (err, found)=>{
+        found.tasks_done++;
+        found.save();
+
+    });
+    
+    profile.findOneAndUpdate({Name:page_profile}, {$pull:{profiles: {_id:id_p}}}, (err, found)=>{
+        res.redirect("/" + page_profile);
+    })    
+})
+
+app.post("/user",(req, res)=>{
+    let page_profile = _.capitalize(req.body.user);
+    res.redirect('/' + page_profile);
+})
+
+
+
+
+
+app.listen(3000, ()=>{
     "listening to port 3000"
 })

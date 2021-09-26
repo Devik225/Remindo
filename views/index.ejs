@@ -41,8 +41,15 @@
 
             <!-- list name -->
             <div class="list_name">
-                <div class="author">Devik's List</div> 
-                <img src="img/edit.svg" class="list_edit">
+                <div class="author"><%= ejs_pageName %>'s List</div> 
+
+                <div class="user">
+                    <img src="img/edit.svg" class="input_edit">
+                    <form action="/user" method="POST">
+                        <input class="userinput" type="text" name="user" placeholder="Switch user" autocomplete="off">
+                    </form>
+                </div>
+                
             </div>
 
             <!-- To do card -->
@@ -51,8 +58,8 @@
                 <!-- To Do -->
                 <div class="todo"> To Do
 
-                    <form action="/" method="POST">
-                        <button class="btn_clear" name="clear" value="clearall">clear</button>
+                    <form action="/delete" method="POST">
+                        <button class="btn_clear" name="clear" value=<%= ejs_pageName %>>clear</button>
                     </form>                   
 
                     <div class="todo_cnt">
@@ -64,8 +71,9 @@
 
                                 <div class="flexme">
 
-                                    <form action="/"  method="POST" class="form_check" >
-                                        <button id="btn" class="check_btn" type="submit" name="check" value= <%= data._id%> ></button>
+                                    <form action="/removeCard"  method="POST" class="form_check">
+                                        <input type="hidden" name="id" value=<%= data._id %>>
+                                        <button id="btn" class="check_btn" type="submit" name="check" value= <%= ejs_pageName %> ></button>
                                     </form>  
 
                                     <div class="todo_card_title"> <%= data.Title%></div>                                     
@@ -98,7 +106,7 @@
                         <div class="compose_desc">    
                             <div>Description:</div>
                             <textarea name="desc" id="desc" rows="6" class="inp_box" autocomplete="off"></textarea>
-                            <button type="submit" class="btn_submit">+</button>
+                            <button type="submit" class="btn_submit" name="_profile" value=<%= ejs_pageName %>>+</button>
                         </div>
 
                     </form>
