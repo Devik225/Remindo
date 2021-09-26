@@ -34,20 +34,6 @@ const profileSchema = new mongoose.Schema({
 const profile = mongoose.model("profile", profileSchema);
 
 
-// app.get("/", (req, res)=>{
-
-//     card.find((err, temp)=>{
-//         res.render("index", {
-//             ejs_pageName:"Devil",
-//             ejs_data: temp, 
-//             ejs_total: total_tasks,
-//             ejs_done: tasks_done,
-//             ejs_pending: total_tasks - tasks_done
-//         });
-//     });
-    
-// })
-
 app.get("/:newurl", (req, res)=>{
     const user = req.params.newurl;
 
