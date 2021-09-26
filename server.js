@@ -6,7 +6,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const _ = require("lodash");
 
-mongoose.connect("mongodb://localhost:27017/Remindo");
+mongoose.connect("mongodb+srv://danny:gullu123@cluster0.nge1k.mongodb.net/Remindo");
 
 const app = express();
 
@@ -141,9 +141,12 @@ app.post("/user",(req, res)=>{
 })
 
 
+let port = process.env.PORT;
+if(port == null || port == ""){
+    port=3000;
+}
 
 
-
-app.listen(3000, ()=>{
+app.listen(port, ()=>{
     "listening to port 3000"
 })
