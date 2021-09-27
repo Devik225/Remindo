@@ -479,6 +479,15 @@ select:focus {
     font-size: 6vw;
   }
 
+  .material-icons.plus {
+    font-size: 6vw;
+  }
+
+  .area_box {
+    font-family: "Mukta", sans-serif;
+    height: 14vw;
+  }
+
   .btn_submit:hover {
     box-shadow: none;
   }
