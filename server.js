@@ -33,6 +33,34 @@ const profileSchema = new mongoose.Schema({
 
 const profile = mongoose.model("profile", profileSchema);
 
+app.get("/", (req, res)=>{
+    const user = "Recent";
+
+    profile.findOne({Name:user}, (err, found)=>{
+        if(!found){
+            const usertemp = new profile({
+                Name:user,
+                total_tasks:0,
+                tasks_done:0,
+                profiles: []
+            });
+        
+            usertemp.save();
+            res.redirect("/");
+        }
+        else{
+            res.render("index", {
+                ejs_pageName:user,
+                ejs_data: found.profiles, 
+                ejs_total: found.total_tasks,
+                ejs_done: found.tasks_done,
+                ejs_pending: found.total_tasks - found.tasks_done
+            });
+        }
+    });
+
+    
+})
 
 app.get("/:newurl", (req, res)=>{
     const user = req.params.newurl;
@@ -133,6 +161,6 @@ if(port == null || port == ""){
 }
 
 
-app.listen(port, ()=>{
+app.listen(3000, ()=>{
     "listening to port 3000"
 })
