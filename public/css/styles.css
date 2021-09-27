@@ -346,14 +346,14 @@ select:focus {
   /* main body */
 
   .body_wrap {
-    top: 25vw;
+    top: 22vw;
     padding-left: 6vw;
   }
 
   /* List name */
 
   .list_name {
-    margin-bottom: 5vw;
+    margin-bottom: 7vw;
     font-size: 6vw;
   }
 
@@ -381,7 +381,7 @@ select:focus {
 
   .todo_cnt {
     margin-top: 1vw;
-    height: 80vw;
+    height: 70vw;
   }
 
   .todo_card {
@@ -439,7 +439,7 @@ select:focus {
 
   /* Compose */
   .compose {
-    margin-top: 5vw;
+    margin-top: 7vw;
     width: 92%;
   }
 
@@ -462,8 +462,8 @@ select:focus {
     position: relative;
     left: 74vw;
     bottom: 1vh;
-    width: 8vw;
-    height: 8vw;
+    width: 9vw;
+    height: 9vw;
     font-size: 6vw;
   }
 
