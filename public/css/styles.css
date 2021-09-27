@@ -8,6 +8,13 @@ body {
   display: block;
 }
 
+/* Universal */
+
+.flexme {
+  display: flex;
+  align-items: center;
+}
+
 /* header */
 
 .nav {
@@ -110,15 +117,6 @@ body {
   overflow-y: scroll;
   height: 30vw;
   background-color: #242f3730;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  -ms-border-radius: 3px;
-  -o-border-radius: 3px;
-}
-
-.flexme {
-  display: flex;
-  align-items: center;
 }
 
 ::-webkit-scrollbar {
@@ -156,10 +154,6 @@ body {
   height: 2vw;
   overflow-y: hidden;
   transition: height 0.5s ease-in-out;
-  -webkit-transition: height 0.5s ease-in-out;
-  -moz-transition: height 0.5s ease-in-out;
-  -ms-transition: height 0.5s ease-in-out;
-  -o-transition: height 0.5s ease-in-out;
 }
 
 .todo_card:hover {
@@ -250,6 +244,9 @@ select:focus {
 }
 
 .btn_submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
   left: 92%;
   width: 2.5vw;
@@ -316,141 +313,158 @@ select:focus {
   cursor: pointer;
 }
 
+/* Responsive-------------------------------------------------------------------------------------- */
+
 @media (orientation: portrait) {
   .nav {
-    height: 5vh;
+    height: 15vw;
   }
 
   .logo {
-    width: 5vh;
-    height: 5vh;
-    background-size: 1.8vh;
+    width: 15vw;
+    height: 15vw;
+    background-size: 6vw;
   }
 
   .logo_name {
-    font-size: 1.55vh;
+    font-size: 5vw;
     margin-left: 2vh;
   }
 
   .day_time {
-    font-size: 1.2vh;
+    font-size: 3vw;
   }
   .time {
     color: white;
-    padding-left: 1vh;
-    padding-right: 1vh;
+    padding-left: 1.5vw;
+    padding-right: 1.5vw;
     border-radius: 1.5px;
-    margin-left: 1.5vh;
-    font-size: 1.1vh;
+    margin-right: 3vw;
+    font-size: 3vw;
   }
 
   /* main body */
 
   .body_wrap {
-    top: 8vh;
-    padding-left: 5vh;
+    top: 25vw;
+    padding-left: 6vw;
   }
 
   /* List name */
 
   .list_name {
-    margin-bottom: 3.5vh;
-    font-size: 2.1vh;
+    margin-bottom: 5vw;
+    font-size: 6vw;
   }
 
   .list_edit {
-    width: 1.6vh;
-    margin-left: 0.6vh;
+    width: 3vw;
+    margin-left: 2vw;
   }
 
   /* To do cards */
 
   .cards {
     flex-direction: column;
-    font-size: 1.2vh;
+    font-size: 4vw;
   }
 
   .cards_toggle {
-    font-size: 1.2vh;
+    font-size: 5vw;
   }
 
   .todo {
-    width: 90%;
-    margin-right: 5vh;
+    width: 93%;
+    margin-right: 5vw;
+    font-weight: 500;
   }
 
   .todo_cnt {
     margin-top: 1vw;
-    height: 50vh;
+    height: 80vw;
   }
 
   .todo_card {
-    padding-top: 1vh;
-    padding-bottom: 1vh;
-    border-radius: 3px;
-    padding-left: 1vh;
-    padding-right: 1vh;
-    margin-bottom: 0.5vh;
-    font-size: 1vh;
-    height: 2vh;
+    padding: 2vw;
+    margin-bottom: 1.5vw;
+    font-size: 4vw;
+    height: 7vw;
   }
 
   .todo_card:hover {
-    height: 5vh;
-    overflow-y: scroll;
+    height: 20vw;
   }
 
   .todo_card_desc {
-    margin-top: 1vh;
+    margin-top: 2vw;
   }
 
   .todo_card_title {
     margin-left: 0.6vh;
-    font-size: 1.2vh;
+    font-size: 4vw;
   }
 
   .btn_clear {
-    top: 0.2vh;
+    background-color: white;
+    color: #0c1821;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    top: 0.4vw;
+    font-size: 3vw;
+  }
+
+  button,
+  input[type="submit"],
+  input[type="reset"] {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
   }
 
   .check_btn {
-    height: 1.1vh;
+    border: 2px solid #0c1821;
+    height: 3vw;
+    width: 3vw;
     font-size: 0.6vh;
   }
 
   .img_expand {
-    right: 1vh;
-    width: 1.4vh;
+    right: 2vw;
+    width: 5vw;
   }
 
   /* Compose */
   .compose {
-    width: 90%;
+    margin-top: 5vw;
+    width: 92%;
   }
 
   .compose_title {
-    padding: 0.6vh;
-    padding-right: 1vh;
-    margin-top: 1vh;
-    font-size: 0.95vh;
+    padding: 1vw;
+    padding-right: 2vw;
+    margin-top: 2vw;
+    font-size: 3vw;
   }
 
   .compose_desc {
-    padding: 0.6vh;
-    padding-right: 1vh;
-    margin-top: 0.6vh;
-    font-size: 0.95vh;
+    padding: 1.2vw;
+    padding-right: 2vw;
+    margin-top: 1.5vw;
+    font-size: 3vw;
   }
 
   .btn_submit {
+    background-color: white;
     position: relative;
-    left: 31vh;
+    left: 74vw;
     bottom: 1vh;
-    width: 4vh;
-    height: 4vh;
-    font-size: 3vh;
-    box-shadow: 0px 4px 6px rgb(131, 131, 131);
-    cursor: pointer;
+    width: 8vw;
+    height: 8vw;
+    font-size: 6vw;
   }
 
   .btn_submit:hover {
@@ -460,13 +474,27 @@ select:focus {
   /* Progress */
 
   .btn_reset {
-    display: flex;
     margin-left: 13vw;
-    cursor: pointer;
   }
 
   .progress {
     display: none;
     width: 22%;
+  }
+
+  .user {
+    margin-left: 1.5vw;
+  }
+
+  .userinput {
+    width: 16vw;
+    font-size: 3vw;
+    font-weight: 400;
+  }
+
+  .input_edit {
+    width: 4vw;
+    top: 0.8vw;
+    margin-right: 0.6vw;
   }
 }

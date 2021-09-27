@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&display=swap');
     </style>
@@ -106,7 +107,11 @@
                         <div class="compose_desc">    
                             <div>Description:</div>
                             <textarea name="desc" id="desc" rows="6" class="inp_box" autocomplete="off"></textarea>
-                            <button type="submit" class="btn_submit" name="_profile" value=<%= ejs_pageName %>>+</button>
+                            <button type="submit" class="btn_submit" name="_profile" value=<%= ejs_pageName %>>
+                                <i class="material-icons">
+                                    add
+                                    </i>
+                            </button>
                         </div>
 
                     </form>
