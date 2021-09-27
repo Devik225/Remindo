@@ -122,7 +122,6 @@ app.post("/", (req, res)=>{
     if(heading){
         profile.findOne({Name:page_profile}, (err, found)=>{
 
-            console.log(found);
             found.profiles.push(cardtemp);
             found.total_tasks++;
             found.save();
@@ -155,12 +154,12 @@ app.post("/user",(req, res)=>{
 })
 
 
-let port = process.env.PORT;
-if(port == null || port == ""){
-    port=3000;
-}
+// let port = process.env.PORT;
+// if(port == null || port == ""){
+//     port=3000;
+// }
 
 
-app.listen(3000, ()=>{
-    "listening to port 3000"
+app.listen(process.env.PORT, ()=>{
+    "listening"
 })
