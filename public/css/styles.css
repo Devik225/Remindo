@@ -172,6 +172,8 @@ body {
 }
 
 .btn_clear {
+  /* width: 3vw; */
+  font-size: 1vw;
   font-weight: 500;
   position: absolute;
   top: 0.2vw;
@@ -243,6 +245,11 @@ select:focus {
   background: none;
 }
 
+.area_box {
+  font-family: "Mukta", sans-serif;
+  height: 11vw;
+}
+
 .btn_submit {
   display: flex;
   align-items: center;
@@ -258,6 +265,10 @@ select:focus {
   border-radius: 25px;
   box-shadow: 0px 4px 6px rgb(131, 131, 131);
   cursor: pointer;
+}
+
+.material-icons.plus {
+  font-size: 1.6vw;
 }
 
 .btn_submit:hover {
@@ -455,6 +466,7 @@ select:focus {
     padding-right: 2vw;
     margin-top: 1.5vw;
     font-size: 3vw;
+    font-family: "Mukta", sans-serif;
   }
 
   .btn_submit {
